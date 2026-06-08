@@ -29,10 +29,6 @@
       "hero.lead": "Costruisco software che va dal web ai sistemi embedded: bot di automazione, stazioni meteo su microcontrollore e applicazioni da riga di comando. Studio Informatica all'Università di Bari e mi appassiona l'accessibilità digitale.",
       "hero.cta1": "Vedi i progetti",
       "hero.cta2": "Contattami",
-      "hero.chip1": "🎓 Università di Bari",
-      "hero.chip2": "♿ Accessibilità Digitale",
-      "hero.chip3": "🤝 Aperto a opportunità",
-      "hero.chip4": "🌍 Italiano · English B1",
 
       "about.title": '<span class="section__num">01.</span> Chi sono',
       "about.p1": 'Sono uno studente di <strong>Informatica e Tecnologie per la Produzione del Software</strong> all\'Università degli Studi di Bari Aldo Moro, con un diploma da Perito Tecnico Informatico.',
@@ -116,11 +112,7 @@
       "hero.role": "Software Developer & Computer Science Student",
       "hero.lead": "I build software that spans from the web to embedded systems: automation bots, microcontroller weather stations and command-line applications. I study Computer Science at the University of Bari and I'm passionate about digital accessibility.",
       "hero.cta1": "View Projects",
-      "hero.cta2": "Get in Touch",
-      "hero.chip1": "🎓 University of Bari",
-      "hero.chip2": "♿ Digital Accessibility",
-      "hero.chip3": "🤝 Open to opportunities",
-      "hero.chip4": "🌍 Italian · English B1",
+      "hero.cta2": "Contacts",
 
       "about.title": '<span class="section__num">01.</span> About Me',
       "about.p1": 'I\'m a student of <strong>Computer Science &amp; Software Production Technologies</strong> at the University of Bari Aldo Moro, with a diploma as an IT Technician.',
@@ -191,6 +183,153 @@
   };
 
   var hasTag = /<\/?[a-z][^>]*>/i;
+
+  /* ============================================================
+     GitHub contribution calendar (native render, theme-aware)
+     ============================================================ */
+  var GH_USER = "Gianni1707";
+  var _contribData = null;
+  var MONTHS = {
+    it: ["Gen", "Feb", "Mar", "Apr", "Mag", "Giu", "Lug", "Ago", "Set", "Ott", "Nov", "Dic"],
+    en: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+  };
+  var WEEKDAYS = {
+    it: { 1: "Lun", 3: "Mer", 5: "Ven" },
+    en: { 1: "Mon", 3: "Wed", 5: "Fri" }
+  };
+
+  function el(tag, cls) {
+    var e = document.createElement(tag);
+    if (cls) e.className = cls;
+    return e;
+  }
+
+  function renderContribFallback(mount) {
+    mount.innerHTML = "";
+    var a = el("a");
+    a.href = "https://github.com/" + GH_USER;
+    a.target = "_blank";
+    a.rel = "noopener noreferrer";
+    var img = el("img");
+    img.alt = "Contributi GitHub di Giovanni Benefico";
+    img.src = "https://github-contributions-api.deno.dev/" + GH_USER + ".svg";
+    img.onerror = function () {
+      this.onerror = null;
+      this.src = "https://ghchart.rshah.org/" + GH_USER;
+    };
+    a.appendChild(img);
+    mount.appendChild(a);
+  }
+
+  function renderContrib(mount, data) {
+    if (!mount || !data || !data.contributions || !data.contributions.length) {
+      if (mount) renderContribFallback(mount);
+      return;
+    }
+    var en = root.getAttribute("lang") === "en";
+    var lang = en ? "en" : "it";
+    var days = data.contributions;
+    var total = (data.total && (data.total.lastYear != null ? data.total.lastYear : data.total)) ||
+      days.reduce(function (s, d) { return s + (d.count || 0); }, 0);
+
+    mount.innerHTML = "";
+    mount.setAttribute("aria-label",
+      en ? (total + " GitHub contributions in the last year")
+         : (total + " contributi GitHub nell'ultimo anno"));
+
+    // Head: count + profile link
+    var head = el("div", "contrib__head");
+    var count = el("span", "contrib__count");
+    count.textContent = en ? (total + " contributions in the last year")
+                           : (total + " contributi nell'ultimo anno");
+    var link = el("a", "contrib__link");
+    link.href = "https://github.com/" + GH_USER;
+    link.target = "_blank";
+    link.rel = "noopener noreferrer";
+    link.textContent = "@" + GH_USER + " ↗";
+    head.appendChild(count);
+    head.appendChild(link);
+
+    var firstDow = new Date(days[0].date + "T00:00:00").getDay(); // 0=Sun
+    var weeks = Math.ceil((firstDow + days.length) / 7);
+
+    var scroll = el("div", "contrib__scroll");
+    var cal = el("div", "contrib__cal");
+
+    // Month labels (above the column where each month starts)
+    var months = el("div", "contrib__months");
+    months.style.gridTemplateColumns = "repeat(" + weeks + ", var(--cell))";
+    var lastMonth = -1, lastLabelCol = -99;
+    days.forEach(function (d, idx) {
+      var m = parseInt(d.date.slice(5, 7), 10) - 1;
+      if (m !== lastMonth) {
+        lastMonth = m;
+        var col = Math.floor((firstDow + idx) / 7);
+        if (col - lastLabelCol >= 3) {
+          var lab = el("span", "contrib__month");
+          lab.textContent = MONTHS[lang][m];
+          lab.style.gridColumnStart = col + 1;
+          lab.style.gridRow = "1";
+          months.appendChild(lab);
+          lastLabelCol = col;
+        }
+      }
+    });
+
+    // Weekday labels (Mon / Wed / Fri)
+    var wd = el("div", "contrib__weekdays");
+    for (var r = 0; r < 7; r++) {
+      var w = el("span", "contrib__weekday");
+      if (WEEKDAYS[lang][r]) w.textContent = WEEKDAYS[lang][r];
+      w.style.gridRow = r + 1;
+      wd.appendChild(w);
+    }
+
+    // The cells
+    var grid = el("div", "contrib__grid");
+    grid.setAttribute("aria-hidden", "true");
+    for (var p = 0; p < firstDow; p++) {
+      grid.appendChild(el("div", "contrib__cell contrib__cell--pad"));
+    }
+    days.forEach(function (d) {
+      var c = el("div", "contrib__cell");
+      c.style.background = "var(--gh-" + (d.level || 0) + ")";
+      c.title = (d.count || 0) + (en ? " contributions · " : " contributi · ") + d.date;
+      grid.appendChild(c);
+    });
+
+    cal.appendChild(months);
+    cal.appendChild(wd);
+    cal.appendChild(grid);
+    scroll.appendChild(cal);
+
+    // Legend
+    var legend = el("div", "contrib__legend");
+    var less = el("span");
+    less.textContent = en ? "Less" : "Meno";
+    legend.appendChild(less);
+    for (var lv = 0; lv <= 4; lv++) {
+      var sw = el("span", "contrib__cell contrib__swatch");
+      sw.style.background = "var(--gh-" + lv + ")";
+      legend.appendChild(sw);
+    }
+    var more = el("span");
+    more.textContent = en ? "More" : "Più";
+    legend.appendChild(more);
+
+    mount.appendChild(head);
+    mount.appendChild(scroll);
+    mount.appendChild(legend);
+  }
+
+  function buildContributions() {
+    var mount = document.getElementById("contrib");
+    if (!mount || !window.fetch) { if (mount) renderContribFallback(mount); return; }
+    fetch("https://github-contributions-api.jogruber.de/v4/" + GH_USER + "?y=last")
+      .then(function (r) { if (!r.ok) throw new Error("http " + r.status); return r.json(); })
+      .then(function (data) { _contribData = data; renderContrib(mount, data); })
+      .catch(function () { renderContribFallback(mount); });
+  }
 
   function applyLang(lang) {
     var dict = I18N[lang] || I18N.it;
@@ -276,6 +415,7 @@
         var next = root.getAttribute("lang") === "it" ? "en" : "it";
         applyLang(next);
         try { localStorage.setItem(LANG_KEY, next); } catch (e) {}
+        if (_contribData) renderContrib(document.getElementById("contrib"), _contribData);
       });
     }
 
@@ -372,6 +512,9 @@
         }
       });
     }
+
+    /* ---------- GitHub contribution calendar ---------- */
+    buildContributions();
 
     /* ---------- Footer year ---------- */
     var yearEl = document.getElementById("year");
