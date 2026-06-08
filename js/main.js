@@ -45,7 +45,6 @@
       "projects.intro": "Una selezione dai miei repository pubblici su GitHub.",
       "proj.smart_t": "Smart Mobility",
       "proj.smart": "Applicazione web per lo sharing di biciclette e monopattini nell'area urbana di Bari. Tre ruoli — utente, operatore e amministrazione pubblica — con mappa interattiva, prenotazione e sblocco dei mezzi, gestione di flotta e manutenzione e dashboard di monitoraggio con report.",
-      "tag.grade": "30 e lode",
       "proj.portfolio_t": "Sito Portfolio",
       "proj.portfolio": "Questo stesso sito: un portfolio personale minimale e accessibile in HTML, CSS e JavaScript vanilla, senza framework. Tema chiaro/scuro, interfaccia bilingue IT/EN e cura dell'accessibilità (HTML semantico, focus visibile, supporto a reduced-motion).",
       "tag.a11y": "Accessibilità",
@@ -90,7 +89,6 @@
 
       "contact.title": '<span class="section__num">05.</span> Contatti',
       "contact.lead": "Sono aperto a nuove opportunità di collaborazione, tirocini e progetti. Per proposte professionali o per saperne di più sul mio lavoro, sarò felice di risponderti.",
-      "contact.btn": "Scrivimi una email",
       "contact.phone": "Telefono",
       "contact.copyAria": "Tocca per copiare il numero di telefono",
 
@@ -129,7 +127,6 @@
       "projects.intro": "A selection from my public GitHub repositories.",
       "proj.smart_t": "Smart Mobility",
       "proj.smart": "Web app for bike and scooter sharing across the urban area of Bari. Three roles — user, operator and public administration — with an interactive map, vehicle booking and unlocking, fleet and maintenance management, and a monitoring dashboard with reports.",
-      "tag.grade": "30 cum laude",
       "proj.portfolio_t": "Portfolio Website",
       "proj.portfolio": "This very site: a minimal, accessible personal portfolio in vanilla HTML, CSS and JavaScript, with no frameworks. Light/dark theme, a bilingual IT/EN interface and attention to accessibility (semantic HTML, visible focus, reduced-motion support).",
       "tag.a11y": "Accessibility",
@@ -174,7 +171,6 @@
 
       "contact.title": '<span class="section__num">05.</span> Contact',
       "contact.lead": "I'm open to new opportunities for collaboration, internships and projects. For professional proposals or to learn more about my work, I'll be glad to reply.",
-      "contact.btn": "Send me an email",
       "contact.phone": "Phone",
       "contact.copyAria": "Tap to copy the phone number",
 
