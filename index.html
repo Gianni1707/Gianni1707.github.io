@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="color-scheme" content="light dark" />
+
+  <title data-i18n="meta.title">Giovanni Benefico — Sviluppatore Software</title>
+  <meta name="description" data-i18n-attr="content" data-i18n="meta.desc" content="Portfolio di Giovanni Benefico, studente di Informatica all'Università di Bari e sviluppatore software. Progetti web, sistemi embedded e bot di automazione." />
+  <meta name="author" content="Giovanni Benefico" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Giovanni Benefico — Sviluppatore Software" />
+  <meta property="og:description" content="Studente di Informatica e sviluppatore. Web, embedded e automazione." />
+  <meta property="og:image" content="https://github.com/Gianni1707.png" />
+
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main" data-i18n="a11y.skip">Salta al contenuto</a>
+
+  <!-- ===== Header / Nav ===== -->
+  <header class="site-header" id="top">
+    <nav class="nav" aria-label="Navigazione principale">
+      <a class="nav__brand" href="#top" aria-label="Giovanni Benefico, torna su">
+        <span class="nav__mono">&lt;GB /&gt;</span>
+      </a>
+
+      <button class="nav__toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Apri menù">
+        <span class="nav__toggle-bar"></span>
+        <span class="nav__toggle-bar"></span>
+        <span class="nav__toggle-bar"></span>
+      </button>
+
+      <ul class="nav__menu" id="nav-menu">
+        <li><a href="#about" data-i18n="nav.about">Chi sono</a></li>
+        <li><a href="#projects" data-i18n="nav.projects">Progetti</a></li>
+        <li><a href="#skills" data-i18n="nav.skills">Competenze</a></li>
+        <li><a href="#path" data-i18n="nav.path">Percorso</a></li>
+        <li><a href="#contact" data-i18n="nav.contact">Contatti</a></li>
+        <li class="nav__controls">
+          <button class="lang-toggle" id="lang-toggle" type="button" aria-label="Switch to English">EN</button>
+          <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Cambia tema chiaro/scuro">
+            <svg class="theme-toggle__icon theme-toggle__icon--sun" viewBox="0 0 24 24" aria-hidden="true" width="20" height="20"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+            <svg class="theme-toggle__icon theme-toggle__icon--moon" viewBox="0 0 24 24" aria-hidden="true" width="20" height="20"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          </button>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main">
+    <!-- ===== Hero ===== -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="container hero__grid">
+        <div class="hero__text reveal">
+          <p class="hero__eyebrow" data-i18n="hero.eyebrow">Ciao, sono</p>
+          <h1 class="hero__title" id="hero-title">Giovanni Benefico</h1>
+          <p class="hero__role" data-i18n="hero.role">Sviluppatore Software &amp; Studente di Informatica</p>
+          <p class="hero__lead" data-i18n="hero.lead">
+            Costruisco software che va dal web ai sistemi embedded: bot di automazione,
+            stazioni meteo su microcontrollore e applicazioni da riga di comando.
+            Studio Informatica all'Università di Bari e mi appassiona l'accessibilità digitale.
+          </p>
+          <div class="hero__actions">
+            <a class="btn btn--primary" href="#projects" data-i18n="hero.cta1">Vedi i progetti</a>
+            <a class="btn btn--ghost" href="#contact" data-i18n="hero.cta2">Contattami</a>
+          </div>
+          <ul class="hero__badges" aria-label="In sintesi">
+            <li class="hero__chip" data-i18n="hero.chip1">🎓 Università di Bari</li>
+            <li class="hero__chip" data-i18n="hero.chip2">♿ Accessibilità Digitale</li>
+            <li class="hero__chip" data-i18n="hero.chip3">🤝 Aperto a opportunità</li>
+            <li class="hero__chip" data-i18n="hero.chip4">🌍 Italiano · English B1</li>
+          </ul>
+        </div>
+
+        <div class="hero__media reveal">
+          <div class="hero__avatar-wrap">
+            <img class="hero__avatar" src="assets/profile.jpg" alt="Foto di Giovanni Benefico" width="280" height="280" loading="eager"
+                 onerror="this.onerror=null;this.src='https://github.com/Gianni1707.png';" />
+            <span class="hero__badge" aria-hidden="true">📍 Bari · Taranto</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== About ===== -->
+    <section class="section" id="about" aria-labelledby="about-title">
+      <div class="container">
+        <h2 class="section__title reveal" id="about-title" data-i18n="about.title"><span class="section__num">01.</span> Chi sono</h2>
+        <div class="about__grid">
+          <div class="about__text reveal">
+            <p data-i18n="about.p1">
+              Sono uno studente di <strong>Informatica e Tecnologie per la Produzione del Software</strong>
+              all'Università degli Studi di Bari Aldo Moro, con un diploma da Perito Tecnico Informatico.
+            </p>
+            <p data-i18n="about.p2">
+              Mi piace capire come funzionano le cose a ogni livello: per questo i miei progetti
+              spaziano dallo <strong>sviluppo web</strong> (bot in Node.js e Python) ai
+              <strong>sistemi embedded</strong> (firmware C++ su ESP32) fino alla
+              <strong>programmazione di sistema</strong> in C.
+            </p>
+            <p data-i18n="about.p3">
+              Collaboro con il <strong>Laboratorio di Tecnologie Assistive &amp; Accessibilità Digitale
+              Aletheia</strong>, dove l'attenzione all'accessibilità è diventata parte del mio modo
+              di costruire software — questo stesso sito è pensato per essere navigabile da tutti.
+            </p>
+          </div>
+          <aside class="about__facts reveal" aria-label="In breve">
+            <h3 class="about__facts-title" data-i18n="about.facts">In breve</h3>
+            <dl class="about__facts-list">
+              <div><dt data-i18n="about.f1k">Ruolo</dt><dd data-i18n="about.f1v">Sviluppatore / Studente</dd></div>
+              <div><dt data-i18n="about.f2k">Sede</dt><dd data-i18n="about.f2v">Bari &amp; Taranto, IT</dd></div>
+              <div><dt data-i18n="about.f3k">Università</dt><dd>UniBa Aldo Moro</dd></div>
+              <div><dt data-i18n="about.f4k">Lingue</dt><dd data-i18n="about.f4v">Italiano · Inglese B1</dd></div>
+              <div><dt data-i18n="about.f5k">Interessi</dt><dd data-i18n="about.f5v">Web · Embedded · Accessibilità</dd></div>
+            </dl>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Projects ===== -->
+    <section class="section section--alt" id="projects" aria-labelledby="projects-title">
+      <div class="container">
+        <h2 class="section__title reveal" id="projects-title" data-i18n="projects.title"><span class="section__num">02.</span> Progetti</h2>
+        <p class="section__intro reveal" data-i18n="projects.intro">Una selezione dai miei repository pubblici su GitHub.</p>
+
+        <ul class="projects" role="list">
+          <!-- 1 · Smart Mobility -->
+          <li class="project reveal">
+            <div class="project__head">
+              <svg class="project__folder" viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+              <a class="project__link" href="https://github.com/Gianni1707/Smart_mobility" target="_blank" rel="noopener noreferrer" aria-label="Apri Smart Mobility su GitHub">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.2.8-.6v-2c-3.2.7-3.9-1.4-3.9-1.4-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.7 1.3 3.4 1 .1-.7.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.3 4.7 18.3 5 18.3 5c.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .4.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5z"/></svg>
+              </a>
+            </div>
+            <h3 class="project__title" data-i18n="proj.smart_t">Smart Mobility</h3>
+            <p class="project__desc" data-i18n="proj.smart">
+              Applicazione web per lo sharing di biciclette e monopattini nell'area urbana di Bari.
+              Tre ruoli — utente, operatore e amministrazione pubblica — con mappa interattiva,
+              prenotazione e sblocco dei mezzi, gestione di flotta e manutenzione e dashboard di
+              monitoraggio con report.
+            </p>
+            <ul class="project__tags" role="list">
+              <li>React</li><li>TypeScript</li><li>Vite</li><li>Tailwind CSS</li><li>Leaflet</li><li>Firebase</li>
+            </ul>
+          </li>
+
+          <!-- 2 · Sito Portfolio (questo sito) -->
+          <li class="project reveal">
+            <div class="project__head">
+              <svg class="project__folder" viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+              <a class="project__link" href="https://github.com/Gianni1707" target="_blank" rel="noopener noreferrer" aria-label="Apri il profilo GitHub">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.2.8-.6v-2c-3.2.7-3.9-1.4-3.9-1.4-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.7 1.3 3.4 1 .1-.7.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.3 4.7 18.3 5 18.3 5c.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .4.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5z"/></svg>
+              </a>
+            </div>
+            <h3 class="project__title" data-i18n="proj.portfolio_t">Sito Portfolio</h3>
+            <p class="project__desc" data-i18n="proj.portfolio">
+              Questo stesso sito: un portfolio personale minimale e accessibile in HTML, CSS e
+              JavaScript vanilla, senza framework. Tema chiaro/scuro, interfaccia bilingue IT/EN
+              e cura dell'accessibilità (HTML semantico, focus visibile, supporto a reduced-motion).
+            </p>
+            <ul class="project__tags" role="list">
+              <li>HTML</li><li>CSS</li><li>JavaScript</li><li data-i18n="tag.a11y">Accessibilità</li><li>i18n</li>
+            </ul>
+          </li>
+
+          <!-- 3 · Progetti TCP / UDP -->
+          <li class="project reveal">
+            <div class="project__head">
+              <svg class="project__folder" viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+              <a class="project__link" href="https://github.com/Gianni1707?tab=repositories" target="_blank" rel="noopener noreferrer" aria-label="Apri i progetti TCP/UDP su GitHub">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.2.8-.6v-2c-3.2.7-3.9-1.4-3.9-1.4-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.7 1.3 3.4 1 .1-.7.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.3 4.7 18.3 5 18.3 5c.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .4.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5z"/></svg>
+              </a>
+            </div>
+            <h3 class="project__title" data-i18n="proj.net_t">Progetti TCP / UDP</h3>
+            <p class="project__desc" data-i18n="proj.net">
+              Applicazioni client-server in C per il corso di Reti di Calcolatori, sviluppate in team:
+              un progetto su socket TCP e uno su socket UDP, ciascuno con protocollo applicativo
+              dedicato e codice portabile su Windows, Linux e macOS.
+            </p>
+            <ul class="project__tags" role="list">
+              <li>C</li><li>Socket TCP</li><li>Socket UDP</li><li data-i18n="tag.networking">Reti</li>
+            </ul>
+          </li>
+
+          <!-- 4 · Bot WhatsApp & Telegram -->
+          <li class="project reveal">
+            <div class="project__head">
+              <svg class="project__folder" viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+              <a class="project__link" href="https://github.com/Gianni1707/Bot_mensa_whatsapp" target="_blank" rel="noopener noreferrer" aria-label="Apri i bot su GitHub">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.2.8-.6v-2c-3.2.7-3.9-1.4-3.9-1.4-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.7 1.3 3.4 1 .1-.7.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.3 4.7 18.3 5 18.3 5c.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .4.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5z"/></svg>
+              </a>
+            </div>
+            <h3 class="project__title">Bot WhatsApp &amp; Telegram</h3>
+            <p class="project__desc" data-i18n="proj.bots">
+              Due bot che ripubblicano automaticamente le storie Instagram di <code>@cx_food</code>:
+              uno su WhatsApp (Node.js, Baileys) e uno su Telegram (Python). Entrambi usano
+              <code>gallery-dl</code> per lo scraping, con polling periodico e gestione anti-duplicati.
+            </p>
+            <ul class="project__tags" role="list">
+              <li>JavaScript</li><li>Python</li><li>Node.js</li><li>Baileys</li><li>gallery-dl</li>
+            </ul>
+          </li>
+
+          <!-- 5 · Weather Station -->
+          <li class="project reveal">
+            <div class="project__head">
+              <svg class="project__folder" viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+              <a class="project__link" href="https://github.com/Gianni1707/Weather_station_E-ink_Display" target="_blank" rel="noopener noreferrer" aria-label="Apri ESP32 Weather Station su GitHub">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.2.8-.6v-2c-3.2.7-3.9-1.4-3.9-1.4-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.7 1.3 3.4 1 .1-.7.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.3 4.7 18.3 5 18.3 5c.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .4.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5z"/></svg>
+              </a>
+            </div>
+            <h3 class="project__title" data-i18n="proj.weather_t">Stazione Meteo E-Paper</h3>
+            <p class="project__desc" data-i18n="proj.weather">
+              Firmware per ESP32 che ogni 15 minuti esce dal deep sleep, si connette al WiFi,
+              sincronizza l'ora via NTP, scarica i dati da Open-Meteo e disegna una dashboard meteo
+              su un display e-paper 7.5" tricolore, poi torna in deep sleep.
+            </p>
+            <ul class="project__tags" role="list">
+              <li>C++</li><li>ESP32</li><li>PlatformIO</li><li>GxEPD2</li>
+            </ul>
+          </li>
+
+          <li class="project project--cta reveal">
+            <div class="project__cta-inner">
+              <svg viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.2.8-.6v-2c-3.2.7-3.9-1.4-3.9-1.4-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.7 1.3 3.4 1 .1-.7.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.3 4.7 18.3 5 18.3 5c.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .4.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5z"/></svg>
+              <p data-i18n="proj.cta">Altri progetti e codice sorgente sono su GitHub.</p>
+              <a class="btn btn--ghost" href="https://github.com/Gianni1707?tab=repositories" target="_blank" rel="noopener noreferrer" data-i18n="proj.cta_btn">Tutti i repository →</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ===== Skills ===== -->
+    <section class="section" id="skills" aria-labelledby="skills-title">
+      <div class="container">
+        <h2 class="section__title reveal" id="skills-title" data-i18n="skills.title"><span class="section__num">03.</span> Competenze</h2>
+        <div class="skills reveal">
+          <div class="skills__group">
+            <h3 data-i18n="skills.g1">Linguaggi</h3>
+            <ul role="list">
+              <li>C</li><li>C++</li><li>Java</li><li>Python</li><li>JavaScript</li><li>TypeScript</li><li>SQL</li><li>HTML &amp; CSS</li>
+            </ul>
+          </div>
+          <div class="skills__group">
+            <h3 data-i18n="skills.g2">Framework &amp; Tecnologie</h3>
+            <ul role="list">
+              <li>React</li><li>Node.js</li><li>Tailwind CSS</li><li>Firebase</li><li>MySQL</li><li>ESP32 / PlatformIO</li><li>Socket TCP/UDP</li>
+            </ul>
+          </div>
+          <div class="skills__group">
+            <h3 data-i18n="skills.gtools">Strumenti</h3>
+            <ul role="list">
+              <li>Git &amp; GitHub</li><li>Linux</li><li>Visual Studio Code</li><li>Arduino IDE</li><li>Eclipse IDE</li><li>MySQL Workbench</li><li>Photoshop</li><li>Bambu Studio</li>
+            </ul>
+          </div>
+          <div class="skills__group">
+            <h3 data-i18n="skills.g3">Ambiti</h3>
+            <ul role="list">
+              <li data-i18n="skills.web">Sviluppo Web</li><li data-i18n="skills.embedded">Sistemi Embedded</li><li data-i18n="skills.bots">Automazione &amp; Bot</li><li data-i18n="skills.a11y">Accessibilità Digitale</li>
+            </ul>
+          </div>
+          <div class="skills__group">
+            <h3 data-i18n="skills.g4">Soft skills</h3>
+            <ul role="list">
+              <li data-i18n="skills.team">Lavoro in team</li><li data-i18n="skills.problem">Problem solving</li><li data-i18n="skills.customer">Cura del cliente</li><li data-i18n="skills.reliable">Affidabilità</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Path: Experience + Education ===== -->
+    <section class="section section--alt" id="path" aria-labelledby="path-title">
+      <div class="container">
+        <h2 class="section__title reveal" id="path-title" data-i18n="path.title"><span class="section__num">04.</span> Percorso</h2>
+        <div class="path__grid">
+          <div class="path__col reveal">
+            <h3 class="path__heading" data-i18n="path.edu">Formazione</h3>
+            <ol class="timeline" role="list">
+              <li class="timeline__item">
+                <span class="timeline__date" data-i18n="path.e1d">2024 — oggi</span>
+                <h4 data-i18n="path.e1t">Laurea in Informatica e Tecnologie per la Produzione del Software</h4>
+                <p data-i18n="path.e1p">Università degli Studi di Bari Aldo Moro · In corso</p>
+              </li>
+              <li class="timeline__item">
+                <span class="timeline__date">2024</span>
+                <h4 data-i18n="path.e4t">Brevetto BLSD</h4>
+                <p>Salvamento Academy</p>
+              </li>
+              <li class="timeline__item">
+                <span class="timeline__date">2017 — 2022</span>
+                <h4 data-i18n="path.e3t">Diploma di Perito Tecnico Informatico</h4>
+                <p>ITIS A. Pacinotti, Taranto</p>
+              </li>
+            </ol>
+          </div>
+
+          <div class="path__col reveal">
+            <h3 class="path__heading" data-i18n="path.exp">Esperienza</h3>
+            <ol class="timeline" role="list">
+              <li class="timeline__item">
+                <span class="timeline__date" data-i18n="path.e2d">2025 — oggi</span>
+                <h4 data-i18n="path.e2t">Lab. Tecnologie Assistive &amp; Accessibilità Digitale</h4>
+                <p data-i18n="path.e2p">Aletheia · <a href="https://aletheialab.it" target="_blank" rel="noopener noreferrer">aletheialab.it</a></p>
+              </li>
+              <li class="timeline__item">
+                <span class="timeline__date" data-i18n="path.x1d">2024 — oggi</span>
+                <h4>Rider</h4>
+                <p>Deliveroo · Bari &amp; Taranto</p>
+              </li>
+              <li class="timeline__item">
+                <span class="timeline__date">2022 — 2023</span>
+                <h4 data-i18n="path.x2t">Addetto Assistenza Clienti (inbound)</h4>
+                <p>Teleperformance · Taranto</p>
+              </li>
+            </ol>
+            <p class="path__note" data-i18n="path.note">
+              Esperienze a contatto con il pubblico che mi hanno insegnato affidabilità,
+              gestione del tempo e attenzione alle persone — qualità che porto anche nel codice.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Contact ===== -->
+    <section class="section section--contact" id="contact" aria-labelledby="contact-title">
+      <div class="container">
+        <h2 class="section__title reveal" id="contact-title" data-i18n="contact.title"><span class="section__num">05.</span> Contatti</h2>
+        <p class="contact__lead reveal" data-i18n="contact.lead">
+          Sono aperto a nuove opportunità di collaborazione, tirocini e progetti.
+          Per proposte professionali o per saperne di più sul mio lavoro, sarò felice di risponderti.
+        </p>
+        <ul class="contact__list reveal" role="list">
+          <li>
+            <a href="mailto:beneficogianni@gmail.com">
+              <svg class="contact__icon" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>
+              <span class="contact__text">
+                <span class="contact__label">Email</span>
+                <span class="contact__value">beneficogianni@gmail.com</span>
+              </span>
+            </a>
+          </li>
+          <li>
+            <button type="button" class="contact__copy" data-copy="+39 388 095 6792" data-i18n-attr="aria-label" data-i18n="contact.copyAria" aria-label="Copia il numero di telefono">
+              <svg class="contact__icon" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              <span class="contact__text">
+                <span class="contact__label" data-i18n="contact.phone">Telefono</span>
+                <span class="contact__value" aria-live="polite">+39 388 095 6792</span>
+              </span>
+            </button>
+          </li>
+          <li>
+            <a href="https://github.com/Gianni1707" target="_blank" rel="noopener noreferrer">
+              <svg class="contact__icon" viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.2.8-.6v-2c-3.2.7-3.9-1.4-3.9-1.4-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.7 1.3 3.4 1 .1-.7.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.3 4.7 18.3 5 18.3 5c.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .4.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5z"/></svg>
+              <span class="contact__text">
+                <span class="contact__label">GitHub</span>
+                <span class="contact__value">@Gianni1707</span>
+              </span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container site-footer__inner">
+      <p>© <span id="year">2026</span> Giovanni Benefico <span class="site-footer__version" title="Versione del sito">v1.0</span></p>
+      <a class="site-footer__top" href="#top" aria-label="Torna su" data-i18n="footer.top">↑ Torna su</a>
+    </div>
+  </footer>
+
+  <script src="js/main.js" defer></script>
+</body>
+</html>
