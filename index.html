@@ -23,7 +23,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
 
-  <link rel="stylesheet" href="css/style.css?v=3" />
+  <link rel="stylesheet" href="css/style.css?v=6" />
 </head>
 <body>
   <a class="skip-link" href="#main" data-i18n="a11y.skip">Salta al contenuto</a>
@@ -61,6 +61,10 @@
   <main id="main">
     <!-- ===== Hero ===== -->
     <section class="hero" aria-labelledby="hero-title">
+      <div class="hero__bg" aria-hidden="true">
+        <canvas class="hero__glitch" id="glitch"></canvas>
+        <span class="hero__bg-veil"></span>
+      </div>
       <div class="container hero__grid">
         <div class="hero__text reveal">
           <p class="hero__eyebrow" data-i18n="hero.eyebrow">Ciao, sono</p>
@@ -395,6 +399,6 @@
     </div>
   </footer>
 
-  <script src="js/main.js?v=3" defer></script>
+  <script src="js/main.js?v=6" defer></script>
 </body>
 </html>

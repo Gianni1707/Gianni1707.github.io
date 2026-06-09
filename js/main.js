@@ -185,6 +185,7 @@
      ============================================================ */
   var GH_USER = "Gianni1707";
   var _contribData = null;
+  var _glitchRefresh = null;
   var MONTHS = {
     it: ["Gen", "Feb", "Mar", "Apr", "Mag", "Giu", "Lug", "Ago", "Set", "Ott", "Nov", "Dic"],
     en: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
@@ -327,6 +328,128 @@
       .catch(function () { renderContribFallback(mount); });
   }
 
+  /* ============================================================
+     LetterGlitch — animated hero background (vanilla canvas port)
+     ============================================================ */
+  function initLetterGlitch() {
+    var bg = document.querySelector(".hero__bg");
+    var canvas = document.getElementById("glitch");
+    if (!bg || !canvas || !canvas.getContext) return;
+    var ctx = canvas.getContext("2d");
+
+    var CHAR_W = 10, CHAR_H = 20, FONT = 16;
+    var SPEED = 24;        // ms between glitch batches (user prop glitchSpeed)
+    var FRACTION = 0.045;  // share of cells changed per batch
+    var STEP = 0.06;       // smooth color-transition speed
+    var CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789<>-_/\\[]{}=+*?#$%&@".split("");
+    var reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+    var letters = [], cols = 0, raf = null, lastT = 0, visible = true, colors = [];
+
+    function hexToRgb(h) {
+      h = h.replace("#", "");
+      if (h.length === 3) h = h[0] + h[0] + h[1] + h[1] + h[2] + h[2];
+      var n = parseInt(h, 16);
+      return [(n >> 16) & 255, (n >> 8) & 255, n & 255];
+    }
+    function readColors() {
+      var cs = getComputedStyle(bg), out = [];
+      for (var i = 1; i <= 3; i++) {
+        var v = cs.getPropertyValue("--glitch-" + i).trim();
+        if (v) out.push(hexToRgb(v));
+      }
+      return out.length ? out : [[44, 110, 79], [63, 148, 104], [97, 189, 140]];
+    }
+    function pick() { return colors[(Math.random() * colors.length) | 0]; }
+    function pickChar() { return CHARS[(Math.random() * CHARS.length) | 0]; }
+    function lerp(a, b, t) { return [a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t, a[2] + (b[2] - a[2]) * t]; }
+    function colorOf(L) { return L.p >= 1 ? L.to : lerp(L.from, L.to, L.p); }
+    function css(c) { return "rgb(" + (c[0] | 0) + "," + (c[1] | 0) + "," + (c[2] | 0) + ")"; }
+
+    function setup() {
+      var r = bg.getBoundingClientRect();
+      if (r.width < 2 || r.height < 2) return;
+      var dpr = Math.min(window.devicePixelRatio || 1, 2);
+      canvas.width = Math.floor(r.width * dpr);
+      canvas.height = Math.floor(r.height * dpr);
+      canvas.style.width = r.width + "px";
+      canvas.style.height = r.height + "px";
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      cols = Math.ceil(r.width / CHAR_W);
+      var total = cols * Math.ceil(r.height / CHAR_H);
+      colors = readColors();
+      letters = new Array(total);
+      for (var i = 0; i < total; i++) {
+        var c = pick();
+        letters[i] = { ch: pickChar(), from: c, to: c, p: 1 };
+      }
+      drawAll();
+    }
+
+    function drawAll() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.font = FONT + "px 'JetBrains Mono', ui-monospace, monospace";
+      ctx.textBaseline = "top";
+      for (var i = 0; i < letters.length; i++) {
+        var L = letters[i];
+        ctx.fillStyle = css(colorOf(L));
+        ctx.fillText(L.ch, (i % cols) * CHAR_W, ((i / cols) | 0) * CHAR_H);
+      }
+    }
+
+    function batch() {
+      var count = Math.max(1, (letters.length * FRACTION) | 0);
+      for (var n = 0; n < count; n++) {
+        var i = (Math.random() * letters.length) | 0;
+        var L = letters[i]; if (!L) continue;
+        L.ch = pickChar(); L.from = colorOf(L); L.to = pick(); L.p = 0;
+      }
+    }
+
+    function advance() {
+      for (var i = 0; i < letters.length; i++) {
+        var L = letters[i];
+        if (L.p < 1) { L.p += STEP; if (L.p > 1) L.p = 1; }
+      }
+    }
+
+    function loop(t) {
+      if (!visible) { raf = null; return; }
+      if (t - lastT >= SPEED) { batch(); lastT = t; }
+      advance();
+      drawAll();
+      raf = requestAnimationFrame(loop);
+    }
+    function start() { if (raf == null && !reduce.matches) { lastT = 0; raf = requestAnimationFrame(loop); } }
+    function stop() { if (raf != null) { cancelAnimationFrame(raf); raf = null; } }
+
+    setup();
+    start();
+
+    if ("IntersectionObserver" in window) {
+      new IntersectionObserver(function (e) {
+        visible = e[0].isIntersecting;
+        if (visible) start(); else stop();
+      }, { threshold: 0 }).observe(document.querySelector(".hero"));
+    }
+
+    var rt;
+    function onResize() { clearTimeout(rt); rt = setTimeout(setup, 150); }
+    window.addEventListener("resize", onResize);
+    if ("ResizeObserver" in window) new ResizeObserver(onResize).observe(bg);
+
+    // Let the theme toggle re-tint the glitch to the new palette
+    _glitchRefresh = function () {
+      colors = readColors();
+      for (var i = 0; i < letters.length; i++) {
+        var L = letters[i];
+        if (reduce.matches) { var c = pick(); L.from = c; L.to = c; L.p = 1; }
+        else { L.from = colorOf(L); L.to = pick(); L.p = 0; }
+      }
+      drawAll();
+    };
+  }
+
   function applyLang(lang) {
     var dict = I18N[lang] || I18N.it;
 
@@ -402,6 +525,7 @@
         var next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
         applyTheme(next);
         try { localStorage.setItem(THEME_KEY, next); } catch (e) {}
+        if (_glitchRefresh) _glitchRefresh();
       });
     }
 
@@ -511,6 +635,9 @@
 
     /* ---------- GitHub contribution calendar ---------- */
     buildContributions();
+
+    /* ---------- Hero glitch background ---------- */
+    initLetterGlitch();
 
     /* ---------- Footer year ---------- */
     var yearEl = document.getElementById("year");

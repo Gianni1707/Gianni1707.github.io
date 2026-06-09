@@ -275,7 +275,27 @@ code {
 .btn--ghost:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
 
 /* ---------- Hero ---------- */
-.hero { padding-block: clamp(3rem, 8vw, 6rem); }
+/* Animated LetterGlitch background (rendered on <canvas> by js/main.js) */
+:root { --glitch-1: #2c6e4f; --glitch-2: #3f9468; --glitch-3: #5aa57c; --glitch-opacity: 0.70; }
+:root[data-theme="dark"] { --glitch-1: #2c6e4f; --glitch-2: #41906a; --glitch-3: #569d77; --glitch-opacity: 0.50; }
+
+.hero { padding-block: clamp(3rem, 8vw, 6rem); position: relative; overflow: hidden; }
+.hero__bg { position: absolute; inset: 0; z-index: 0; overflow: hidden; pointer-events: none; }
+.hero__glitch { display: block; width: 100%; height: 100%; opacity: var(--glitch-opacity); }
+.hero__bg-veil {
+  position: absolute;
+  inset: 0;
+  /* fade the glitch out at the top (under the header) and bottom (into the next
+     section) so it blends seamlessly — no hard edge — plus a readability scrim */
+  background:
+    linear-gradient(to bottom,
+      var(--bg) 0%,
+      transparent 20%,
+      transparent 60%,
+      var(--bg) 100%),
+    color-mix(in srgb, var(--bg) 50%, transparent);
+}
+.hero > .container { position: relative; z-index: 1; }
 .hero__grid {
   display: grid;
   grid-template-columns: 1.4fr 1fr;
@@ -776,6 +796,12 @@ code {
   }
   /* slightly smaller contribution cells so less horizontal scrolling */
   .hero__contrib { --cell: 11px; --gap: 2px; }
+  /* keep the top/bottom blend on mobile too, slightly stronger scrim */
+  .hero__bg-veil {
+    background:
+      linear-gradient(to bottom, var(--bg) 0%, transparent 16%, transparent 62%, var(--bg) 100%),
+      color-mix(in srgb, var(--bg) 56%, transparent);
+  }
 
   /* Projects become a swipeable carousel on mobile */
   .projects {
