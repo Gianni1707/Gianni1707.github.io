@@ -3,22 +3,22 @@
    Minimal, professional, accessibility-first
    ============================================================ */
 
-/* ---------- Design tokens ---------- */
+/* ---------- Design tokens — fir-green palette ---------- */
 :root {
-  --bg: #ffffff;
-  --bg-alt: #f6f7f9;
+  --bg: #fbfdfb;
+  --bg-alt: #eef4f0;
   --surface: #ffffff;
-  --surface-2: #f0f2f5;
-  --text: #16181d;
-  --text-soft: #4b5563;
-  --text-faint: #6b7280;
-  --border: #e4e7ec;
-  --accent: #2563eb;
-  --accent-soft: rgba(37, 99, 235, 0.1);
+  --surface-2: #e6efe9;
+  --text: #122019;
+  --text-soft: #3f5247;
+  --text-faint: #687c71;
+  --border: #d6e3db;
+  --accent: #2c6e4f;
+  --accent-soft: rgba(44, 110, 79, 0.1);
   --accent-contrast: #ffffff;
-  --shadow-sm: 0 1px 2px rgba(16, 24, 40, 0.05);
-  --shadow-md: 0 8px 24px rgba(16, 24, 40, 0.08);
-  --shadow-lg: 0 18px 48px rgba(16, 24, 40, 0.12);
+  --shadow-sm: 0 1px 2px rgba(18, 45, 31, 0.06);
+  --shadow-md: 0 8px 24px rgba(18, 45, 31, 0.09);
+  --shadow-lg: 0 18px 48px rgba(18, 45, 31, 0.13);
 
   --maxw: 1120px;
   --radius: 14px;
@@ -32,20 +32,20 @@
 }
 
 :root[data-theme="dark"] {
-  --bg: #0b0d11;
-  --bg-alt: #11141a;
-  --surface: #151921;
-  --surface-2: #1c2230;
-  --text: #f2f4f8;
-  --text-soft: #b3bccb;
-  --text-faint: #8a94a6;
-  --border: #262d3a;
-  --accent: #60a5fa;
-  --accent-soft: rgba(96, 165, 250, 0.14);
-  --accent-contrast: #0b0d11;
-  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
-  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.45);
-  --shadow-lg: 0 18px 48px rgba(0, 0, 0, 0.55);
+  --bg: #0a120d;
+  --bg-alt: #0e1812;
+  --surface: #121e17;
+  --surface-2: #1a2a20;
+  --text: #e9f2ec;
+  --text-soft: #b0c4b8;
+  --text-faint: #84998c;
+  --border: #243a2d;
+  --accent: #61bd8c;
+  --accent-soft: rgba(97, 189, 140, 0.15);
+  --accent-contrast: #07120b;
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.42);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.48);
+  --shadow-lg: 0 18px 48px rgba(0, 0, 0, 0.58);
 }
 
 /* ---------- Reset ---------- */
