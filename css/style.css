@@ -282,6 +282,7 @@ code {
   gap: clamp(2rem, 5vw, 4rem);
   align-items: center;
 }
+.hero__grid > * { min-width: 0; } /* prevent any child from forcing the grid wider than the viewport */
 .hero__eyebrow {
   font-family: var(--font-mono);
   color: var(--accent);
@@ -315,6 +316,7 @@ code {
   grid-column: 1 / -1;
   margin-top: 2.8rem;
   width: 100%;
+  min-width: 0; /* allow the column to shrink instead of being blown out by the wide calendar */
   /* cell sizing */
   --cell: 13px;
   --gap: 3px;
@@ -340,6 +342,7 @@ code {
 .contrib__scroll {
   overflow-x: auto;
   max-width: 100%;
+  min-width: 0;
   padding-bottom: 0.4rem;
   -webkit-overflow-scrolling: touch; /* momentum scroll on iOS */
   overscroll-behavior-x: contain;
@@ -773,6 +776,24 @@ code {
   }
   /* slightly smaller contribution cells so less horizontal scrolling */
   .hero__contrib { --cell: 11px; --gap: 2px; }
+
+  /* Projects become a swipeable carousel on mobile */
+  .projects {
+    display: flex;
+    grid-template-columns: none;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 1rem;
+    padding-bottom: 1.1rem;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-x: contain;
+    scrollbar-width: none; /* Firefox */
+  }
+  .projects::-webkit-scrollbar { display: none; } /* WebKit */
+  .project {
+    flex: 0 0 84%;
+    scroll-snap-align: start;
+  }
 }
 
 @media (max-width: 480px) {
