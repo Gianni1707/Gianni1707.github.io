@@ -32,37 +32,6 @@ portfolio/
 └── README.md
 ```
 
-## 🚀 Avvio in locale
-
-Apri semplicemente `index.html` nel browser, oppure avvia un server statico:
-
-```bash
-# Python
-python3 -m http.server 8000
-
-# Node
-npx serve .
-```
-
-Poi visita <http://localhost:8000>.
-
-## 🌐 Deploy su GitHub Pages
-
-1. Crea un repository (es. `Gianni1707.github.io` per il sito principale, oppure un repo qualsiase).
-2. Carica questi file:
-   ```bash
-   git init
-   git add .
-   git commit -m "Portfolio iniziale"
-   git branch -M main
-   git remote add origin https://github.com/Gianni1707/<repo>.git
-   git push -u origin main
-   ```
-3. Su GitHub: **Settings → Pages → Branch: `main` / root → Save**.
-4. Dopo qualche minuto il sito sarà online su `https://gianni1707.github.io/<repo>/`.
-
-> In alternativa puoi pubblicarlo gratis anche su **Netlify** o **Vercel** trascinando la cartella.
-
 ## ✏️ Personalizzazione
 
 - **📷 Foto profilo:** sostituisci semplicemente il file **`assets/profile.jpg`** con la tua foto
