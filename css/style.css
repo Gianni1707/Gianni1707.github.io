@@ -276,7 +276,7 @@ code {
 
 /* ---------- Hero ---------- */
 /* Animated LetterGlitch background (rendered on <canvas> by js/main.js) */
-:root { --glitch-1: #2c6e4f; --glitch-2: #3f9468; --glitch-3: #5aa57c; --glitch-opacity: 0.70; }
+:root { --glitch-1: #2c6e4f; --glitch-2: #3f9468; --glitch-3: #5aa57c; --glitch-opacity: 0.40; }
 :root[data-theme="dark"] { --glitch-1: #2c6e4f; --glitch-2: #41906a; --glitch-3: #569d77; --glitch-opacity: 0.50; }
 
 .hero { padding-block: clamp(3rem, 8vw, 6rem); position: relative; overflow: hidden; }
@@ -750,7 +750,8 @@ code {
 
 /* ---------- Responsive ---------- */
 @media (max-width: 860px) {
-  .nav__toggle { display: flex; }
+  /* mobile: hamburger on the left, brand on the right */
+  .nav__toggle { display: flex; order: -1; }
   .nav__menu {
     position: fixed;
     inset: var(--header-h) 0 auto 0;
