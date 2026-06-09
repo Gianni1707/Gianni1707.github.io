@@ -66,6 +66,7 @@ body {
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   transition: background-color 0.3s ease, color 0.3s ease;
+  overflow-x: clip; /* guard against accidental horizontal scroll without breaking sticky header */
 }
 
 img { max-width: 100%; display: block; }
@@ -336,7 +337,13 @@ code {
 .contrib__link { font-size: 0.85rem; color: var(--text-faint); transition: color 0.2s ease; }
 .contrib__link:hover { color: var(--accent); }
 
-.contrib__scroll { overflow-x: auto; padding-bottom: 0.4rem; }
+.contrib__scroll {
+  overflow-x: auto;
+  max-width: 100%;
+  padding-bottom: 0.4rem;
+  -webkit-overflow-scrolling: touch; /* momentum scroll on iOS */
+  overscroll-behavior-x: contain;
+}
 .contrib__cal {
   display: grid;
   grid-template-columns: auto 1fr;
@@ -467,7 +474,7 @@ code {
 /* ---------- Projects ---------- */
 .projects {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(310px, 100%), 1fr));
   gap: 1.4rem;
 }
 .project {
@@ -547,7 +554,7 @@ code {
 /* ---------- Skills ---------- */
 .skills {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr));
   gap: 1.4rem;
 }
 .skills__group {
@@ -752,11 +759,30 @@ code {
 
   .about__grid { grid-template-columns: 1fr; }
   .path__grid { grid-template-columns: 1fr; gap: 2.5rem; }
+
+  /* tap targets a bit taller in the mobile menu */
+  .nav__menu a { padding: 0.7rem 0; }
+}
+
+@media (max-width: 600px) {
+  /* stack contacts vertically for easier tapping */
+  .contact__list {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.15rem;
+  }
+  /* slightly smaller contribution cells so less horizontal scrolling */
+  .hero__contrib { --cell: 11px; --gap: 2px; }
 }
 
 @media (max-width: 480px) {
-  .hero__title { font-size: 2.4rem; }
-  .contact__list { grid-template-columns: 1fr; }
+  .hero { padding-block: clamp(2rem, 7vw, 3rem); }
+  .hero__title { font-size: clamp(2rem, 9vw, 2.5rem); }
+  .hero__avatar { width: 180px; height: 180px; }
+  .section { padding-block: clamp(3rem, 12vw, 4.5rem); }
+  .project, .skills__group, .about__facts { padding: 1.3rem; }
+  /* let the two header controls sit comfortably */
+  .nav__controls { gap: 0.6rem; }
 }
 
 /* ---------- Reduced motion ---------- */
